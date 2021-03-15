@@ -51,6 +51,6 @@ Namespaces are one honking great idea -- let's do more of those!"""
     resp['encrypted'] = seed_to_return
 
     #  (this is vulnerable)
-    resp['Access-Control-Allow-Origin'] = request.META.get('Origin')
-    
+    resp['Access-Control-Allow-Origin'] = request.META.get('HTTP_ORIGIN')
+
     return resp
