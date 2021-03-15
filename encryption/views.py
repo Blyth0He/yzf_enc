@@ -1,5 +1,5 @@
 from django.shortcuts import render
-
+from django.views.decorators.csrf import csrf_exempt
 from django.http import HttpResponse
 
 from random import choice
@@ -8,6 +8,7 @@ from Crypto.Cipher import AES
 from base64 import b64encode
 import json
 
+@csrf_exempt
 def index(request):
     zen_of_py = """The Zen of Python, by Tim Peters
 
