@@ -10,7 +10,7 @@ import json
 
 @csrf_exempt
 def index(request):
-    zen_of_py = """The Zen of Python, by Tim Peters
+    zen_of_py = json.dumps({'zen':"""The Zen of Python, by Tim Peters
 
 Beautiful is better than ugly.
 Explicit is better than implicit.
@@ -30,7 +30,7 @@ Now is better than never.
 Although never is often better than *right* now.
 If the implementation is hard to explain, it's a bad idea.
 If the implementation is easy to explain, it may be a good idea.
-Namespaces are one honking great idea -- let's do more of those!"""
+Namespaces are one honking great idea -- let's do more of those!"""})
 
     seed = choice(range(1000,9999))
     passphrase = md5(str(seed ** 2 % 4877).encode()).hexdigest()[0x8:0x18]
@@ -53,5 +53,6 @@ Namespaces are one honking great idea -- let's do more of those!"""
 
     #  (this is vulnerable)
     resp['Access-Control-Allow-Origin'] = request.META.get('HTTP_ORIGIN')
+    resp['Access-Control-Allow-Headers'] = 'encrypted'
 
     return resp
