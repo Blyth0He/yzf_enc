@@ -26,15 +26,15 @@
         //     }
         // }
 
-        // $.ajax({
-        //     url:'http://blyth.xyz:8000/encrypt/',
-        //     type: 'GET',
-        //     success: function(data){
-        //         console.log(data.result)
-        //     }
-        // })
-
-
-        
+        setTimeout(foo, 100)
+        function foo()
+        {$.ajax({
+            url:'/encrypt',
+            type: 'GET',
+            success: function(data){
+                div_zen.innerText = data.result.zen
+                console.log(data.result)
+            }
+        });}
     </script>
 </html>
